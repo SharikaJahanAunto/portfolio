@@ -50,10 +50,10 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="{% url 'index' %}" class="active">Home</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'resume' %}">Resume</a></li>
-          <li><a href="services.html">Services</a></li>
+          <li><a href="{% url 'service' %}">Services</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
@@ -91,10 +91,9 @@
         <h2>Sharika Jahan Aunto</h2>
         <p>I'm <span class="typed" data-typed-items="Developer, Freelancer">Developer</span><span class="typed-cursor typed-cursor--blink"></span></p>
         <div class="social-links">
-          <a href="#"><i class="bi bi-twitter-x"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
+          {% for c in social %}
+          <a href="{{ c.link }}"><i class="{{c.social_icon}}"></i></a>
+          {% endfor %}
         </div>
       </div>
 
@@ -107,11 +106,9 @@
       <h3 class="sitename">Personal</h3>
       <p>Motivated and enthusiastic student studying computer science and engineering, with a focus on data science and web development. Furthermore, a tech enthusiast who is always researching new technologies and using them to create creative solutions. I appreciate taking a rational approach and using creativity to solve complicated problems.</p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        {% for c in social %}
+        <a href="{{ c.link }}"><i class="{{c.social_icon}}"></i></a>
+        {% endfor %}
       </div>
       <div class="container">
         <div class="copyright">
