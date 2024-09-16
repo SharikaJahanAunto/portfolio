@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import About, Social, Service
-
+from .forms import *
 
 # Create your views here.
 def index(request):
@@ -22,3 +22,14 @@ def service_details(request,pk):
     service_details = Service.objects.get(pk=pk)
 
     return render(request,'service-details.html',{'service_details':service_details}) 
+
+def contact(request):
+    form = ContactForm(request.POST)
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+
+    return render(request,"contact.html",{'form':form})

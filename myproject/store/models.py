@@ -28,4 +28,11 @@ class Service(models.Model):
     title = models.CharField(max_length=500)
     image= models.ImageField(upload_to='Service/',blank=True, null=True)
     discription= models.CharField(max_length=500)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    message = models.CharField(max_length=1000)
+    
     
